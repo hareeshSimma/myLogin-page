@@ -1,0 +1,17 @@
+<div class="container" >
+  <div class="col-md-3"></div> 
+  <div class="col-md-6">
+    <form role="form" >
+    <h1><u>User Login Page:</u></h1>
+        <div class="form-group">
+              <input type="text" [(ngModel)]="username" name="username" id="first_name" class="form-control input-sm" placeholder="Enter your username">
+            </div>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+        </div>        	
+      <input type="submit" (click)="onLoginSubmit()" value="Login" class="btn btn-info btn-block">
+      <input type="submit" routerLink="/forgotpassword" value="Forgot Password" class="btn btn-success btn-block">
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container" >
+  <div class="col-md-3"></div> 
+  <div class="col-md-6">
+    <form role="form" (submit)="onRegisterSubmit()">
+    <h1><u>User Registration Page:</u></h1>
+        <div class="form-group">
+              <input type="text" [(ngModel)]="name" name="name" id="first_name" class="form-control input-sm" placeholder="Enter your name">
+            </div>
+        <div class="form-group">
+              <input type="text" [(ngModel)]="username" name="username" id="first_name" class="form-control input-sm" placeholder="Enter your username">
+            </div>
+        <div class="form-group">
+          <input  [(ngModel)]="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+        </div>        	
+      <input type="submit" value="Signup" class="btn btn-info btn-block">
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
