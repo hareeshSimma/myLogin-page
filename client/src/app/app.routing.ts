@@ -6,7 +6,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 const appRoutes : Routes = [
     { path : '', children : [
-        { path : '', component : HomeComponent},
+        { path : '', component : LoginComponent},
+        
+        { path : 'home', component : HomeComponent},
         { path : 'login', component : LoginComponent},
         { path : 'signup', component : SignupComponent},
         { path : 'forgotpassword', component : ForgotpasswordComponent}
@@ -14,6 +16,14 @@ const appRoutes : Routes = [
     ] }
     
 ]
+
+
+
+
+
+
+
+
 
 @NgModule({
     imports : [

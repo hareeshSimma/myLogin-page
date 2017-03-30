@@ -11,12 +11,12 @@ mongoose.connect(config.database);
 
 // on connection
 mongoose.connection.on('connected', () => {
-    console.log('Mongoose connected successfully ' +config.database);
+    console.log('Mongoose connected successfully ' + config.database);
 });
 
 // on error
 mongoose.connection.on('error', (err) => {
-    console.log('Database error ' +err);
+    console.log('Database error ' + err);
 });
 
 const app = express();
@@ -42,11 +42,11 @@ require('./config/passport')(passport);
 app.use('/users', users);
 
 // index route
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('hello world')
 })
 
 // start server
 app.listen(port, function() {
-    console.log('server is running at ' +port);
+    console.log('server is running at ' + port);
 })

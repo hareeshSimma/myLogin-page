@@ -27,7 +27,8 @@ const user = {
       email: this.email
      }
 console.log(user)
- this.alertMail.sendMail(user).subscribe(data => {
+this.alertMail.url="http://localhost:3000/users/forgotpassword";
+ this.alertMail.postService(user).subscribe(data => {
 
  	console.log(data);
 
@@ -64,8 +65,8 @@ const user={
   cpswd:this.cpswd
 }
 console.log(user)
-
-this.alertMail.setPassword(user).subscribe(data => {
+this.alertMail.url="http://localhost:3000/users/setPassword";
+this.alertMail.postService(user).subscribe(data => {
 
    console.log(data);
    if(data.success) {

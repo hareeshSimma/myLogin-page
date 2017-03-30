@@ -6,42 +6,49 @@ import 'rxjs/add/operator/map';
 export class AuthService {
   authToken : any;
   user : any;
+   url:string;
   constructor(private http : Http) { }
 
-  registerUser(user) {
+
+
+getService() {
     let headers = new Headers();
+    console.log(this.url);
     headers.append('Content-Type', 'application/json');
-     return this.http.post('http://localhost:3000/users/register', user, { headers : headers})
+     return this.http.get(this.url, { headers : headers})
       .map(res => res.json());
   }
-  authenticateUser(user) {
+
+
+  postService(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-     return this.http.post('http://localhost:3000/users/authenticate', user, { headers : headers})
+     return this.http.post(this.url, user, { headers : headers})
       .map(res => res.json());
   }
+  
   storeUserData(token, user) {
-    localStorage.setItem('id_token', token);
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('id_token', token);
+    sessionStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }
 
 
-sendMail(user) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-     return this.http.post('http://localhost:3000/users/forgotpassword', user, { headers : headers})
-      .map(res => res.json());
-  }
+// sendMail(user) {
+//     let headers = new Headers();
+//     headers.append('Content-Type', 'application/json');
+//      return this.http.post('http://localhost:3000/users/forgotpassword', user, { headers : headers})
+//       .map(res => res.json());
+//   }
 
 
-  setPassword(user){
+  // setPassword(user){
 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/setPassword', user, { headers : headers})
-      .map(res => res.json());
-  }
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('http://localhost:3000/users/setPassword', user, { headers : headers})
+  //     .map(res => res.json());
+  // }
 
 }

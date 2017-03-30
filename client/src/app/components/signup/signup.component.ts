@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   username : String;
   email : String;
   password : String;
+  mobile : Number;
   constructor(
     private validateService : ValidateService, 
     private flashMessage : FlashMessagesService,
@@ -22,17 +23,22 @@ export class SignupComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    
   }
   onRegisterSubmit(){
+    
     const user = {
       name : this.name,
       username : this.username,
       email : this.email,
-      password : this.password
+      password : this.password,
+      mobileno : this.mobile
     }
+
+    
     // Reguired fields
     if(!this.validateService.validateRegister(user)) {
-      this.flashMessage.show('please fill all the fields', { cssClass : 'alert-danger', timeOut : 5000 });
+      this.flashMessage.show('Please Fill All The Fields', { cssClass : 'alert-danger', timeOut : 5000 });
       return false;
     }
 
@@ -43,11 +49,15 @@ export class SignupComponent implements OnInit {
     }
 
     // Register user
-    this.authService.registerUser(user).subscribe(data =>  {
+
+    this.authService.url ='http://localhost:3000/users/register';
+    this.authService.postService(user).subscribe(data =>  {
+      console.log(data);
       if(data.success) {
       this.flashMessage.show('Registered Successfully and you can Login now', { cssClass : 'alert-success', timeOut : 3000 })
       this.router.navigate(['/login']);
-      }else {
+    }else {
+      console.log(data);
       this.flashMessage.show('Something went wrong, Try again', { cssClass : 'alert-danger', timeOut : 3000 })
       this.router.navigate(['/signup']);
       }
